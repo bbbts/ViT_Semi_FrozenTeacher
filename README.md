@@ -90,29 +90,29 @@ It includes a **semi-supervised** setup, supporting **Flame (fire segmentation)*
 ## 3️⃣ Dataset Structure
 
 ### 🔥 Flame Dataset
-Datasets/Flame/
-├── images/
-│   ├── train/ (.jpg)
-│   ├── test/ (.jpg)
-│   └── validation/ (.jpg)
-└── masks/
-    ├── train/ (.png)
-    ├── test/ (.png)
-    └── validation/ (.png)
+    Datasets/Flame/
+    ├── images/
+    │   ├── train/ (.jpg)
+    │   ├── test/ (.jpg)
+    │   └── validation/ (.jpg)
+    └── masks/
+        ├── train/ (.png)
+        ├── test/ (.png)
+        └── validation/ (.png)
 
 - Semi-supervised: additional unlabeled images can be placed in `train_unlabeled/`  
-- Download: [Flame Dataset](https://ieee-dataport.org/open-access/flame-dataset-aerial-imagery-pile-burn-detection-using-drones-uavs)
+- Download: https://ieee-dataport.org/open-access/flame-dataset-aerial-imagery-pile-burn-detection-using-drones-uavs
 
 ### 🏙️ ADE20K Dataset
-Datasets/ADE20K/ADEChallengeData2016/
-├── images/
-│   ├── training/ (.jpg)
-│   └── validation/ (.jpg)
-└── annotations/
-    ├── training/ (.png)
-    └── validation/ (.png)
+    Datasets/ADE20K/ADEChallengeData2016/
+    ├── images/
+    │   ├── training/ (.jpg)
+    │   └── validation/ (.jpg)
+    └── annotations/
+        ├── training/ (.png)
+        └── validation/ (.png)
 
-- Download: [ADE20K Dataset](https://groups.csail.mit.edu/vision/datasets/ADE20K/)
+- Download: https://groups.csail.mit.edu/vision/datasets/ADE20K/
 
 
 ---
