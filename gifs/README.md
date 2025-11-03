@@ -1,0 +1,1 @@
+Example GIF files
