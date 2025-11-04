@@ -235,61 +235,67 @@ python3 inference.py \
 
 
 ✅ **Usage Example**
-```bash
-python3 iou_vs_label.py \
-  --predictions-root /home/AD.UNLV.EDU/bhattb3/segmenter_SEMI1/segm/ \
-  --models-root /home/AD.UNLV.EDU/bhattb3/segmenter_SEMI1/segm/ \
-  --output-dir /home/AD.UNLV.EDU/bhattb3/segmenter_SEMI1/segm/plots/
-This will generate the following plots in your specified output-dir: mIoU_vs_labeled_ratio.png and loss_vs_labeled_ratio.png
 
-**Example Plot:**
+    python3 iou_vs_label.py \
+      --predictions-root /home/AD.UNLV.EDU/bhattb3/segmenter_SEMI1/segm/ \
+      --models-root /home/AD.UNLV.EDU/bhattb3/segmenter_SEMI1/segm/ \
+      --output-dir /home/AD.UNLV.EDU/bhattb3/segmenter_SEMI1/segm/plots/
 
-![Mean IoU vs Labeled Dataset Ratio](./mIoU_vs_labeled_ratio.png)
+This will generate the following plots in your specified output directory:
+- mIoU_vs_labeled_ratio.png
+- loss_vs_labeled_ratio.png
+
+**Example Plots:**
+
+![Mean IoU vs Labeled Dataset Ratio](./mIoU_vs_labeled_ratio.png)  
 ![Training Loss vs Labeled Dataset Ratio](./loss_vs_labeled_ratio.png)
 
+---
 
 ## 9️⃣ Original Repo Commands
 
 ### Inference
-python -m segm.inference --model-path seg_tiny_mask/checkpoint.pth -i images/ -o segmaps/
+    python -m segm.inference --model-path seg_tiny_mask/checkpoint.pth -i images/ -o segmaps/
 
 ### ADE20K Evaluation
-# single-scale
-python -m segm.eval.miou seg_tiny_mask/checkpoint.pth ade20k --singlescale
-# multi-scale
-python -m segm.eval.miou seg_tiny_mask/checkpoint.pth ade20k --multiscale
+Single-scale evaluation:
+    python -m segm.eval.miou seg_tiny_mask/checkpoint.pth ade20k --singlescale
+
+Multi-scale evaluation:
+    python -m segm.eval.miou seg_tiny_mask/checkpoint.pth ade20k --multiscale
 
 ### Training (ADE20K)
-python -m segm.train --log-dir seg_tiny_mask --dataset ade20k \
-  --backbone vit_tiny_patch16_384 --decoder mask_transformer
+    python -m segm.train --log-dir seg_tiny_mask --dataset ade20k \
+      --backbone vit_tiny_patch16_384 --decoder mask_transformer
 
-- For `Seg-B-Mask/16`, use `vit_base_patch16_384` and >=4 V100 GPUs  
+Note: For `Seg-B-Mask/16` use `vit_base_patch16_384` and ≥4 V100 GPUs.
 
 ### Logs
-python -m segm.utils.logs logs.yml
+    python -m segm.utils.logs logs.yml
 
-logs.yml example:
-root: /path/to/checkpoints/
-logs:
-  seg-t: seg_tiny_mask/log.txt
-  seg-b: seg_base_mask/log.txt
+Example `logs.yml`:
+    root: /path/to/checkpoints/
+    logs:
+      seg-t: seg_tiny_mask/log.txt
+      seg-b: seg_base_mask/log.txt
 
 ---
 
 ## 🔟 Repository Structure
+
 segmenter-flame/
-├── segm/                    # Core Segmenter code
-├── train.py                 # Supervised training
-├── train_semi.py            # Semi-supervised training
-├── eval.py                  # Evaluation script
-├── inference.py             # Supervised inference
-├── inference_semi.py        # Semi-supervised inference
-├── iou_vs_label.py          # mIoU vs Labeled Dataset script
-├── requirements.txt         # Dependencies
-├── datasets/                # Dataset loaders
-├── logs/                    # Checkpoints, plots, CSV logs
-├── README.md                # Project documentation
-└── utils/                   # Helper scripts
+├── segm/                    # Core Segmenter code  
+├── train.py                 # Supervised training  
+├── train_semi.py            # Semi-supervised training  
+├── eval.py                  # Evaluation script  
+├── inference.py             # Supervised inference  
+├── inference_semi.py        # Semi-supervised inference  
+├── iou_vs_label.py          # mIoU vs Labeled Dataset script  
+├── requirements.txt         # Dependencies  
+├── datasets/                # Dataset loaders  
+├── logs/                    # Checkpoints, plots, CSV logs  
+├── README.md                # Project documentation  
+└── utils/                   # Helper scripts  
 
 ---
 
@@ -297,29 +303,30 @@ segmenter-flame/
 
 | Year | Paper | Authors | Link |
 |------|-------|---------|------|
-| 2017 | *Attention Is All You Need* | Vaswani et al. | [arXiv](https://arxiv.org/abs/1706.03762) |
-| 2020 | *An Image is Worth 16x16 Words* | Dosovitskiy et al. | [arXiv](https://arxiv.org/abs/2010.11929) |
-| 2021 | *Segmenter: Transformer for Semantic Segmentation* | Strudel et al. | [arXiv](https://arxiv.org/abs/2105.05633v3) |
-| 2021 | *Segmenter GitHub* | Strudel et al. | [GitHub](https://github.com/rstrudel/segmenter) |
-| 2022 | *FLAME: Fire Segmentation Dataset* | IEEE Dataport | [Dataset](https://ieee-dataport.org/open-access/flame-dataset-aerial-imagery-pile-burn-detection-using-drones-uavs) |
-| 2017 | *ADE20K Benchmark* | Zhou et al. | [Dataset](https://groups.csail.mit.edu/vision/datasets/ADE20K/) |
+| 2017 | *Attention Is All You Need* | Vaswani et al. | https://arxiv.org/abs/1706.03762 |
+| 2020 | *An Image is Worth 16x16 Words* | Dosovitskiy et al. | https://arxiv.org/abs/2010.11929 |
+| 2021 | *Segmenter: Transformer for Semantic Segmentation* | Strudel et al. | https://arxiv.org/abs/2105.05633v3 |
+| 2021 | *Segmenter GitHub* | Strudel et al. | https://github.com/rstrudel/segmenter |
+| 2022 | *FLAME: Fire Segmentation Dataset* | IEEE Dataport | https://ieee-dataport.org/open-access/flame-dataset-aerial-imagery-pile-burn-detection-using-drones-uavs |
+| 2017 | *ADE20K Benchmark* | Zhou et al. | https://groups.csail.mit.edu/vision/datasets/ADE20K/ |
 
 ---
 
 ## 🔟 Author & Acknowledgments
 
 **Author:**  
-👩‍💻 Bijoya Bhattacharjee  
-Ph.D. Student — Electrical & Computer Engineering, UNLV  
+Bijoya Bhattacharjee  
+Ph.D. Student — Electrical & Computer Engineering, UNLV
 
 **Research Topics:**  
-🔥 Wildfire Detection & Segmentation  
-🧠 Vision Transformers & Semi-Supervised Learning  
-🛰️ Remote Sensing & Multimodal Data  
+- Wildfire Detection & Segmentation  
+- Vision Transformers & Semi-Supervised Learning  
+- Remote Sensing & Multimodal Data
 
 **Acknowledgments:**  
-- Built on **Segmenter (Strudel et al., 2021)**  
-- Uses [timm](https://github.com/rwightman/pytorch-image-models) & [mmsegmentation](https://github.com/open-mmlab/mmsegmentation)  
-- Semi-supervised framework enables ViT to learn from unlabeled UAV images  
+- Built on Segmenter (Strudel et al., 2021)  
+- Uses timm and mmsegmentation  
+- Semi-supervised framework enables ViT to learn from unlabeled UAV images
 
-> *“Leveraging unlabeled data, ViT learns richer features for wildfire segmentation, reducing annotation cost without sacrificing accuracy.”*
+> “Leveraging unlabeled data, ViT learns richer features for wildfire segmentation, reducing annotation cost without sacrificing accuracy.”
+
