@@ -120,7 +120,7 @@ It includes a **semi-supervised** setup, supporting **Flame (fire segmentation)*
 ## 4️⃣ Installation
 
 ### Clone
-git clone [This Repo](https://github.com/bbbts/ViT_Semi_FrozenTeacher)
+git clone [This Repo](https://github.com/bbbts/ViT_Semi_FrozenTeacher)  
 cd ViT_Semi_FrozenTeacher
 
 ### Option 1: Conda Environment
