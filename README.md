@@ -120,13 +120,13 @@ It includes a **semi-supervised** setup, supporting **Flame (fire segmentation)*
 ## 4️⃣ Installation
 
 ### Clone
-git clone [This Repo](https://github.com/bbbts/ViT_Semi_FrozenTeacher)  
-cd ViT_Semi_FrozenTeacher
+1. git clone [This Repo](https://github.com/bbbts/ViT_Semi_FrozenTeacher)  
+2. cd ViT_Semi_FrozenTeacher
 
 ### Option 1: Conda Environment
-conda create -n segmenter_env python=3.8 -y
-conda activate segmenter_env
-pip install -r requirements.txt
+conda create -n segmenter_env python=3.8 -y  
+conda activate segmenter_env  
+pip install -r requirements.txt  
 
 ### Option 2: PyTorch + pip install
 1. Install [PyTorch 1.9](https://pytorch.org/)  
