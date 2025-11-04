@@ -191,47 +191,48 @@ python3 inference.py \
 
 ## 8️⃣ IoU vs Labeled Dataset Script
 
-Directory Structure:
-Working Directory/
-├── MODEL_FILE
-│   ├── evaluation_metrics.csv
-│   ├── losses.csv
-│   ├── checkpoint.pth
-│   └── training_losses.png
-├── MODEL_FILE_0.4
-│   ├── evaluation_metrics.csv
-│   ├── losses.csv
-│   ├── checkpoint.pth
-│   └── training_losses.png
-├── MODEL_FILE_0.6
-│   ├── evaluation_metrics.csv
-│   ├── losses.csv
-│   ├── checkpoint.pth
-│   └── training_losses.png
-├── MODEL_FILE_0.7
-│   ├── evaluation_metrics.csv
-│   ├── losses.csv
-│   ├── checkpoint.pth
-│   └── training_losses.png
-├── PREDICTION/flame
-│   ├── *.jpg predictions
-│   └── eval_metrics.csv
-├── PREDICTION_0.4/flame
-│   ├── *.jpg predictions
-│   └── eval_metrics.csv
-├── PREDICTION_0.6/flame
-│   ├── *.jpg predictions
-│   └── eval_metrics.csv
-└── PREDICTION_0.7/flame
-    ├── *.jpg predictions
-    └── eval_metrics.csv
+### 📂 Directory Structure
+    Working Directory/
+    ├── MODEL_FILE
+    │   ├── evaluation_metrics.csv
+    │   ├── losses.csv
+    │   ├── checkpoint.pth
+    │   └── training_losses.png
+    ├── MODEL_FILE_0.4
+    │   ├── evaluation_metrics.csv
+    │   ├── losses.csv
+    │   ├── checkpoint.pth
+    │   └── training_losses.png
+    ├── MODEL_FILE_0.6
+    │   ├── evaluation_metrics.csv
+    │   ├── losses.csv
+    │   ├── checkpoint.pth
+    │   └── training_losses.png
+    ├── MODEL_FILE_0.7
+    │   ├── evaluation_metrics.csv
+    │   ├── losses.csv
+    │   ├── checkpoint.pth
+    │   └── training_losses.png
+    ├── PREDICTION/flame
+    │   ├── *.jpg predictions
+    │   └── eval_metrics.csv
+    ├── PREDICTION_0.4/flame
+    │   ├── *.jpg predictions
+    │   └── eval_metrics.csv
+    ├── PREDICTION_0.6/flame
+    │   ├── *.jpg predictions
+    │   └── eval_metrics.csv
+    └── PREDICTION_0.7/flame
+        ├── *.jpg predictions
+        └── eval_metrics.csv
 
-### How `iou_vs_label.py` Works
+### ⚙️ How `iou_vs_label.py` Works
 - Reads `eval_metrics.csv` and `losses.csv` from multiple trained models (with different labeled ratios)  
 - Generates **two plots**:
   1. **Mean IoU vs Labeled Dataset Ratio** – shows segmentation performance vs fraction of labeled data  
   2. **Training Loss vs Labeled Dataset Ratio** – shows final training loss vs fraction of labeled data  
-- Automatically matches `PREDICTION*` folders to `MODEL_FILE*` folders, extracts metrics, and saves plots to output directory  
+- Automatically matches `PREDICTION*` folders to `MODEL_FILE*` folders, extracts metrics, and saves plots to the output directory
+
 
 ✅ **Usage Example**
 ```bash
