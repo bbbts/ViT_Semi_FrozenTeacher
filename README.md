@@ -193,7 +193,6 @@ python3 train.py \
 
 ---
 
-### Short explanation of the columns (so you can paste straight into README)
 - **CE / Weighted_CE / Dice / Sup / Unsup / Total / Validation** — loss components logged per epoch.  
   - *CE* = cross-entropy loss (averaged over batch).  
   - *Weighted_CE* = class-weighted CE (same as CE here because no class weights were applied).  
