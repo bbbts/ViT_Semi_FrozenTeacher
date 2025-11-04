@@ -157,7 +157,7 @@ python3 train.py \
 
 ## 6️⃣ Evaluation, Training Logs & Plots
 
-### Training Logging
+### Training Logging (summary)
 - **Loss Plot (`training_losses.png`)** shows:  
   1. Train Cross-Entropy Loss (CE)  
   2. Train Dice Loss  
@@ -166,9 +166,56 @@ python3 train.py \
   5. Total Loss  
   6. Validation Loss  
 
-- **CSV Logging** contains per-epoch metrics: Pixel Accuracy, Mean Pixel Accuracy, Mean IoU, FWIoU, Per-Class F1 (Dice), Precision, Recall, Per-Class IoU  
+- **CSV Logging** contains per-epoch metrics: Pixel Accuracy, Mean Pixel Accuracy, Mean IoU, FWIoU, Per-Class F1 (Dice), Precision, Recall, Per-Class IoU.  
+- All logs, PNGs and CSVs are saved to `--log-dir`.
 
-**Saved in `--log-dir`**
+> **Note:** The training CSV reports epoch index starting at `0`. So `epoch = 49` means the 50th epoch (0...49).
+
+---
+
+### Final per-epoch evaluation (supervised / semi-supervised run with `--labeled-ratio 0.5`, 50 epochs)
+**Table 1 — Final evaluation metrics (epoch 49 = 50th epoch)**
+
+| epoch | PixelAcc   | MeanAcc     | IoU         | MeanIoU     | FWIoU      | PerClassDice                                  | Precision                                      | Recall                                         | F1                                              | PerClassIoU                                  |
+|-------:|-----------:|------------:|------------:|------------:|-----------:|-----------------------------------------------:|-----------------------------------------------:|-----------------------------------------------:|------------------------------------------------:|----------------------------------------------:|
+| 49    | 0.99745606 | 0.90250299  | 0.82516710  | 0.82516710  | 0.99745606 | [0.99872029, 0.78999841]                       | [0.99884415, 0.77424186]                      | [0.99859643, 0.80640954]                      | [0.99871975, 0.78999788]                       | [0.99744385, 0.65289038]                     |
+
+*(PerClassDice, Precision, Recall, F1, PerClassIoU are arrays for classes: [background, fire].)*
+
+---
+
+### Final loss breakdown & labeled/all splits (same run)
+**Table 2 — Loss components and labeled/all performance splits**
+
+| CE         | Weighted_CE | Dice        | Sup        | Unsup      | Total       | Validation  | PixelAcc_labeled | PixelAcc_all | IoU_labeled  | IoU_all     | Dice_labeled | Dice_all   |
+|-----------:|------------:|------------:|-----------:|-----------:|------------:|------------:|-----------------:|------------:|-------------:|-----------:|-------------:|-----------:|
+| 0.00810654 | 0.00810654  | 0.11966547  | 0.00810654 | 0.00338157 | 0.131153576 | 0.14670658  | 0.997546656      | 0.498773328 | 0.827817305  | 0.42892138 | 0.896282912  | 0.59696009 |
+
+---
+
+### Short explanation of the columns (so you can paste straight into README)
+- **CE / Weighted_CE / Dice / Sup / Unsup / Total / Validation** — loss components logged per epoch.  
+  - *CE* = cross-entropy loss (averaged over batch).  
+  - *Weighted_CE* = class-weighted CE (same as CE here because no class weights were applied).  
+  - *Dice* = Dice loss (or Dice coefficient depending on naming; here logged as loss value).  
+  - *Sup* = supervised loss term (usually CE + Dice on labeled images).  
+  - *Unsup* = unsupervised loss term (consistency/pseudo-label loss on unlabeled images).  
+  - *Total* = sup + unsup (plus any regularizers).  
+  - *Validation* = validation loss (on held-out set).
+- **PixelAcc / MeanAcc / IoU / MeanIoU / FWIoU** — standard segmentation evaluation metrics:
+  - *PixelAcc* — fraction of correctly labeled pixels overall.  
+  - *MeanAcc* — average per-class accuracy.  
+  - *IoU* — overall intersection-over-union (sometimes reported as per-image average).  
+  - *MeanIoU* — mean IoU across classes.  
+  - *FWIoU* — frequency-weighted IoU.
+- **PerClassDice / PerClassIoU / Precision / Recall / F1** — per-class metrics reported as arrays in [background, fire] order.
+- **PixelAcc_labeled / PixelAcc_all, IoU_labeled / IoU_all, Dice_labeled / Dice_all** — when you log metrics separately for the labeled subset vs. the entire evaluation set (useful for semi-supervised experiments).
+
+---
+
+If you want, I can produce a Markdown-ready snippet that inserts these two tables plus the short explanations into your README in the exact place you prefer (single uninterrupted code block). Tell me where you'd like it placed and I'll return that full snippet ready to paste.
+::contentReference[oaicite:0]{index=0}
+
 
 ---
 
