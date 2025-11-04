@@ -209,13 +209,6 @@ python3 train.py \
   - *FWIoU* — frequency-weighted IoU.
 - **PerClassDice / PerClassIoU / Precision / Recall / F1** — per-class metrics reported as arrays in [background, fire] order.
 - **PixelAcc_labeled / PixelAcc_all, IoU_labeled / IoU_all, Dice_labeled / Dice_all** — when you log metrics separately for the labeled subset vs. the entire evaluation set (useful for semi-supervised experiments).
-
----
-
-If you want, I can produce a Markdown-ready snippet that inserts these two tables plus the short explanations into your README in the exact place you prefer (single uninterrupted code block). Tell me where you'd like it placed and I'll return that full snippet ready to paste.
-::contentReference[oaicite:0]{index=0}
-
-
 ---
 
 ## 7️⃣ Inference & Metrics Logging
